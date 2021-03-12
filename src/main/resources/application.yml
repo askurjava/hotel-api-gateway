@@ -1,0 +1,20 @@
+server:
+  port: 9191
+
+spring:
+  application:
+    name: api-gateway
+
+zuul:
+  prefix: /api
+  routes:
+    guest-service:
+      path : /guest-service/**
+      url : http://localhost:8001
+    hotel-service:
+      path: /hotel-service/**
+      url: http://localhost:8002
+    reservation-service:
+      path: /reservation-service/**
+      url: http://localhost:8003
+  sensitive-headers: Cookie,Set-Cookie
